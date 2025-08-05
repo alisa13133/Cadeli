@@ -31,7 +31,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 15px 0;
+            padding: 10px 0;
         }
 
         nav {
@@ -419,15 +419,33 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            header {
+                padding: 8px 0;
+            }
+
             .nav-links {
                 display: flex;
                 flex-direction: column;
-                gap: 15px;
-                font-size: 14px;
+                gap: 8px;
+                font-size: 12px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding-top: 80px;
             }
             
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
             }
             
             .apartment-grid {
@@ -436,10 +454,6 @@
             
             .building-showcase {
                 grid-template-columns: 1fr;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
             }
 
             .design-gallery {
