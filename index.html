@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadeli - Exclusive Larnaca Apartments</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #2c2c2c;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #c4c4c4;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('building-evening.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            font-weight: 300;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #4a4a4a, #666666);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Project Description */
+        .project-intro {
+            background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .project-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+            font-weight: 300;
+        }
+
+        .project-intro p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* Project Images */
+        .project-images {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            padding: 50px 0;
+        }
+
+        .project-images h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #2c2c2c;
+            font-weight: 300;
+        }
+
+        .building-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .building-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #f0f0f0;
+            aspect-ratio: 4/3;
+        }
+
+        .building-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Apartments Section */
+        .apartments {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 100px 0;
+            color: white;
+        }
+
+        .apartments h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            font-weight: 300;
+        }
+
+        .apartment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .apartment-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .apartment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .apartment-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .apartment-card .specs {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .apartment-card .specs li {
+            margin: 8px 0;
+            color: #c4c4c4;
+        }
+
+        .apartment-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .apartment-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sold-badge {
+            background: #ff4444;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* Interior Design Section */
+        .interior-design {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            padding: 100px 0;
+        }
+
+        .interior-design h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+            font-weight: 300;
+        }
+
+        .interior-design p {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            color: #555;
+        }
+
+        .design-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .design-image {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .design-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Investment Section */
+        .investment {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .investment h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .investment-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #4a4a4a, #666666);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        /* Location Section */
+        .location {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .location h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #2c2c2c;
+            font-weight: 300;
+        }
+
+        .map-container {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .map-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .map-link {
+            color: #2c5282;
+            text-decoration: none;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: rgba(44, 82, 130, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .map-link:hover {
+            background: rgba(44, 82, 130, 0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .phone-number {
+            color: #c4c4c4;
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin: 30px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #c4c4c4;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 5px 0;
+            }
+
+            .nav-links {
+                display: none;
+            }
+            
+            .logo {
+                font-size: 16px;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .apartment-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .building-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .design-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .apartment-image img,
+            .building-image img,
+            .design-image img {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">CADELI</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#apartments">Apartments</a></li>
+                <li><a href="#investment">Investment</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>EXCLUSIVE LARNACA RESIDENCE</h1>
+            <p>A unique architectural masterpiece in the heart of Cyprus's most promising city</p>
+            <a href="#contact" class="cta-button">BOOK NOW</a>
+        </div>
+    </section>
+
+    <section id="project" class="project-intro">
+        <div class="container">
+            <h2>An Exclusive Opportunity</h2>
+            <p>Only 4 exclusive apartments in a prime Larnaca location! Each apartment takes up an entire floor, giving you maximum privacy and space. Construction starts soon, so secure your apartment today at the lowest price.</p>
+            <p>Perfect location with everything nearby: supermarkets, shops, restaurants, beaches, and airport just minutes away. This modern building combines luxury design with Mediterranean lifestyle. Your own private floor means pure comfort and style!</p>
+        </div>
+    </section>
+
+    <section class="project-images">
+        <div class="container">
+            <h3>Architectural Vision</h3>
+            <div class="building-showcase">
+                <div class="building-image">
+                    <img src="building-day.jpg" alt="Cadeli Building Daytime View">
+                </div>
+                <div class="building-image">
+                    <img src="building-evening.jpg" alt="Cadeli Building Evening View">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="apartments" class="apartments">
+        <div class="container">
+            <h2>Available Apartments</h2>
+            
+            <div class="apartment-grid">
+                <div class="apartment-card">
+                    <h3>First Floor Apartment</h3>
+                    <div class="apartment-image">
+                        <img src="first-floor.jpg" alt="First Floor Plan">
+                    </div>
+                    <ul class="specs">
+                        <li>🏠 80 sqm interior space</li>
+                        <li>🌿 22 sqm private veranda</li>
+                        <li>🏢 28 sqm common area access</li>
+                        <li>🚗 Covered parking included</li>
+                    </ul>
+                </div>
+
+                <div class="apartment-card">
+                    <h3>Second Floor Apartment</h3>
+                    <div class="apartment-image">
+                        <img src="second-floor.jpg" alt="Second Floor Plan">
+                    </div>
+                    <ul class="specs">
+                        <li>🏠 80 sqm interior space</li>
+                        <li>🌿 22 sqm private veranda</li>
+                        <li>🏢 28 sqm common area access</li>
+                        <li>🚗 Covered parking included</li>
+                    </ul>
+                </div>
+
+                <div class="apartment-card">
+                    <h3>Penthouse - Third Floor</h3>
+                    <div class="apartment-image">
+                        <img src="third-floor.jpg" alt="Third Floor Penthouse Plan">
+                    </div>
+                    <ul class="specs">
+                        <li>🏠 85 sqm interior space</li>
+                        <li>🌿 20 sqm private veranda</li>
+                        <li>🌺 50 sqm exclusive roof garden</li>
+                        <li>🏢 28 sqm common area access</li>
+                        <li>🚗 Covered parking included</li>
+                    </ul>
+                </div>
+
+                <div class="apartment-card">
+                    <h3>Ground Floor Maisonette</h3>
+                    <div class="apartment-image">
+                        <img src="ground-floor.jpg" alt="Ground Floor Maisonette Plan">
+                    </div>
+                    <ul class="specs">
+                        <li>🏠 60 sqm duplex design</li>
+                        <li>🛏️ 1 bedroom, 2 bathrooms</li>
+                        <li>🌳 40 sqm private garden</li>
+                        <li>🚗 Covered parking included</li>
+                    </ul>
+                    <div class="sold-badge">SOLD</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="interior-design">
+        <div class="container">
+            <h2>Interior Design Possibilities</h2>
+            <p>While these images represent potential interior design concepts, they showcase the luxury and elegance that could be achieved in your new residence.</p>
+            
+            <div class="design-gallery">
+                <div class="design-image">
+                    <img src="bedroom-interior.jpg" alt="Luxury Bedroom Interior">
+                </div>
+                <div class="design-image">
+                    <img src="living-room.jpg" alt="Modern Living Room">
+                </div>
+                <div class="design-image">
+                    <img src="rooftop-terrace.jpg" alt="Rooftop Terrace with Sea View">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="investment" class="investment">
+        <div class="container">
+            <h2>Why This is Your Best Investment</h2>
+            
+            <div class="investment-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Larnaca's Growth</h3>
+                    <p>Larnaca is experiencing unprecedented development. Property values are projected to increase significantly over the next few years, making this an exceptional investment opportunity.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🇪🇺</div>
+                    <h3>EU Residency</h3>
+                    <p>Purchasing property in Cyprus opens the door to European Union residency, providing you with access to all EU benefits and opportunities.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💎</div>
+                    <h3>Pre-Construction Pricing</h3>
+                    <p>Secure your exclusive residence at today's prices before construction begins. This unique opportunity won't last long.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="location">
+        <div class="container">
+            <h2>Prime Larnaca Location</h2>
+            <p>Strategically positioned in one of Larnaca's most desirable areas, offering convenience and future growth potential.</p>
+            
+            <div class="map-container">
+                <div class="map-image" style="background-image: url('location-map.jpg');">
+                    <div class="map-overlay">
+                        <strong>📍 Prime Larnaca Location</strong><br>
+                        <a href="https://maps.app.goo.gl/SpxfCkhBcC1zoEFUA" target="_blank" class="map-link">
+                            View on Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Ready to Secure Your Future?</h2>
+            <p>Don't miss this exclusive opportunity. Contact us today to learn more about these exceptional residences.</p>
+            
+            <div class="contact-info">
+                <div class="phone-number">+357 97 477 776</div>
+                <p>Speak with our property specialists</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cadeli. All rights reserved. | Exclusive Larnaca Properties</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header transparency on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 26, 0.98)';
+            } else {
+                header.style.background = 'rgba(26, 26, 26, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
